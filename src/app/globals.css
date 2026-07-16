@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────── */
+:root {
+  --color-sage:     #4B6858;
+  --color-gold:     #C09A6B;
+  --color-cream:    #F8F4EF;
+  --color-sand:     #EDE5D8;
+  --color-forest:   #1E2D26;
+  --color-muted:    #4A5E53;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream-100 text-forest font-sans;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-forest;
+    line-height: 1.2;
+  }
+
+  p {
+    @apply text-forest-muted;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-sage-500 ring-offset-2 ring-offset-cream-100;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  ::selection {
+    background-color: #4B685830;
+    color: var(--color-forest);
+  }
+}
+
+/* ─── Components ─────────────────────────────────────────────────────────── */
+@layer components {
+  /* Container */
+  .container-vgp {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Section padding */
+  .section-py {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .section-py-sm {
+    @apply py-12 md:py-16;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-sage-500 hover:bg-sage-600
+           text-white font-semibold
+           px-6 py-3 rounded-xl
+           transition-all duration-200
+           hover:shadow-card-hover
+           active:scale-[0.98]
+           text-sm md:text-base;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           border-2 border-sage-500 text-sage-500
+           hover:bg-sage-500 hover:text-white
+           font-semibold
+           px-6 py-3 rounded-xl
+           transition-all duration-200
+           active:scale-[0.98]
+           text-sm md:text-base;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold-400 hover:bg-gold-500
+           text-white font-semibold
+           px-6 py-3 rounded-xl
+           transition-all duration-200
+           hover:shadow-card-hover
+           active:scale-[0.98]
+           text-sm md:text-base;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2
+           border-2 border-white/60 text-white
+           hover:bg-white/10
+           font-semibold
+           px-6 py-3 rounded-xl
+           transition-all duration-200
+           active:scale-[0.98]
+           text-sm md:text-base;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2
+           bg-[#25D366] hover:bg-[#1ebe5e]
+           text-white font-semibold
+           px-6 py-3 rounded-xl
+           transition-all duration-200
+           hover:shadow-card-hover
+           active:scale-[0.98]
+           text-sm md:text-base;
+  }
+
+  /* Section title */
+  .section-label {
+    @apply inline-flex items-center gap-2
+           text-gold-400 font-semibold text-sm tracking-widest uppercase;
+  }
+
+  .section-label::before {
+    content: '';
+    @apply block w-8 h-0.5 bg-gold-400 rounded;
+  }
+
+  /* Cards */
+  .card-vgp {
+    @apply bg-white rounded-3xl p-6 md:p-8
+           shadow-card hover:shadow-card-hover
+           transition-all duration-300;
+  }
+
+  /* Form fields */
+  .input-vgp {
+    @apply w-full px-4 py-3
+           bg-white border border-cream-300
+           rounded-xl text-forest placeholder-forest-subtle
+           focus:outline-none focus:ring-2 focus:ring-sage-500/40 focus:border-sage-500
+           transition-all duration-200
+           text-sm md:text-base;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1
+           bg-sage-100 text-sage-600
+           rounded-full text-xs font-semibold tracking-wide;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center px-3 py-1
+           bg-gold-50 text-gold-600
+           rounded-full text-xs font-semibold tracking-wide;
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-gradient-sage {
+    @apply bg-gradient-to-r from-sage-500 to-sage-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-500 to-gold-400 bg-clip-text text-transparent;
+  }
+
+  /* Organic shape utilities */
+  .clip-organic {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 85% 100%, 15% 100%, 0 88%);
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animate on scroll base */
+  .aos-init {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 3px;
+}
