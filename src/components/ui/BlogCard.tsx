@@ -25,19 +25,28 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           </div>
         </div>
         {/* Content */}
-        <div className="flex flex-col justify-center gap-4 p-8">
-          <div className="flex items-center gap-4 text-xs text-forest-subtle">
-            <span className="flex items-center gap-1">
-              <Calendar size={12} /> {formattedDate}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock size={12} /> {post.readingTime} min leitura
-            </span>
+        <div className="flex flex-1 flex-col justify-between gap-6 p-8">
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 text-xs text-forest-subtle">
+              <span className="flex items-center gap-1">
+                <Calendar size={12} /> {formattedDate}
+              </span>
+              <span className="flex items-center gap-1">
+                <Clock size={12} /> {post.readingTime} min leitura
+              </span>
+            </div>
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-forest text-balance group-hover:text-sage-500 transition-colors">
+              {post.title}
+            </h3>
+            <p className="text-forest-muted text-sm leading-relaxed">{post.excerpt}</p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {post.tags.slice(0, 3).map((tag) => (
+                <span key={tag} className="flex items-center gap-1 text-xs text-forest-subtle bg-cream-200 px-2 py-0.5 rounded-full">
+                  <Tag size={9} /> {tag}
+                </span>
+              ))}
+            </div>
           </div>
-          <h3 className="font-serif text-xl md:text-2xl font-bold text-forest text-balance group-hover:text-sage-500 transition-colors">
-            {post.title}
-          </h3>
-          <p className="text-forest-muted text-sm leading-relaxed">{post.excerpt}</p>
           <Link
             href={`/blog/${post.slug}`}
             className="inline-flex items-center gap-2 text-sage-500 font-semibold text-sm hover:gap-3 transition-all"
